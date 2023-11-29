@@ -1,8 +1,8 @@
 
 #pragma once
 
-#include "application/application.hpp"
-#include "application/window.hpp"
+#include "../application/application.hpp"
+#include "../application/window.hpp"
 
 class FallingSand : public Application {
     public:

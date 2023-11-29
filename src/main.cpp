@@ -1,5 +1,5 @@
 
-#include "falling_sand.hpp"
+#include "falling_sand/falling_sand.hpp"
 
 int main() {
     FallingSand app;
