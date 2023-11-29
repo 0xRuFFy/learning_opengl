@@ -5,7 +5,7 @@
 #include "falling_sand.hpp"
 
 FallingSand::FallingSand() : window(800, 600, "Falling Sand") {
-    // TODO setup
+    world = FallingSandWorld();
 }
 
 FallingSand::~FallingSand() {
@@ -17,6 +17,7 @@ void FallingSand::run() {
         processInput();
 
         // TODO update
+        world.update();
 
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -30,8 +31,5 @@ void FallingSand::processInput() {
         window.close();
     }
 
-    if (window.isMouseClicked(GLFW_MOUSE_BUTTON_LEFT)) {
-        auto [cursorX, cursorY] = window.getCursorPos();
-        std::cout << cursorX << " " << cursorY << std::endl;
-    }
+    world.processInput(window);
 }

@@ -9,12 +9,12 @@ class Window {
         Window(int width, int height, const char* title);
         ~Window();
 
-        bool shouldClose() noexcept;
+        bool shouldClose() const noexcept;
         void close() noexcept;
-        bool isKeyPressed(int keyCode) noexcept;
-        std::pair<double, double> getCursorPos() noexcept;
-        bool isMousePressed(int button) noexcept;
-        bool isMouseClicked(int button) noexcept;
+        bool isKeyPressed(int keyCode) const noexcept;
+        std::pair<double, double> getCursorPos() const noexcept;
+        bool isMousePressed(int button) const noexcept;
+        bool isMouseClicked(int button) const noexcept;
         void update() noexcept;
 
     private:

@@ -54,7 +54,7 @@ Window::~Window() {
     glfwTerminate();
 }
 
-bool Window::shouldClose() noexcept {
+bool Window::shouldClose() const noexcept {
     return glfwWindowShouldClose(glfwWindow);
 }
 
@@ -62,21 +62,21 @@ void Window::close() noexcept {
     glfwSetWindowShouldClose(glfwWindow, GLFW_TRUE);
 }
 
-bool Window::isKeyPressed(int keyCode) noexcept {
+bool Window::isKeyPressed(int keyCode) const noexcept {
     return glfwGetKey(glfwWindow, keyCode) == GLFW_PRESS;
 }
 
-std::pair<double, double> Window::getCursorPos() noexcept {
+std::pair<double, double> Window::getCursorPos() const noexcept {
     double x, y;
     glfwGetCursorPos(glfwWindow, &x, &y);
     return std::make_pair(x, y);
 }
 
-bool Window::isMousePressed(int button) noexcept {
+bool Window::isMousePressed(int button) const noexcept {
     return glfwGetMouseButton(glfwWindow, button) == GLFW_PRESS;
 }
 
-bool Window::isMouseClicked(int button) noexcept {
+bool Window::isMouseClicked(int button) const noexcept {
     static bool wasPressed = false;
     bool isPressed = glfwGetMouseButton(glfwWindow, button) == GLFW_PRESS;
 
