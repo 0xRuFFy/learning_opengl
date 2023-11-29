@@ -36,3 +36,6 @@ Thumbs.db
 
 # ctags
 tags
+
+# Cache
+.cache
