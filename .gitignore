@@ -1,0 +1,37 @@
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CMakeScripts/
+*.sln
+*.vcxproj
+*.vcproj
+
+# Build output
+build/
+bin/
+
+# Compiled files
+*.o
+*.obj
+*.exe
+*.out
+
+# Visual Studio Code
+.vscode/
+
+# Submodule directories
+external/
+
+# macOS specific files
+.DS_Store
+
+# Linux specific files
+*.swp
+*.swo
+
+# Windows specific files
+Thumbs.db
+
+# ctags
+tags
