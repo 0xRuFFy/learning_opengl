@@ -16,7 +16,6 @@ file(GLOB_RECURSE SOURCE_FILES "src/*.cpp")
 # Add header files
 file(GLOB_RECURSE HEADER_FILES "include/*.hpp" "src/*.hpp")
 
-include(cmake/clang-cxx-dev-tools.cmake)
 find_program(CLANG_FORMAT "clang-format")
 if(CLANG_FORMAT)
 	add_custom_target(
@@ -29,18 +28,18 @@ if(CLANG_FORMAT)
 	)
 endif()
 
-find_program(CLANG_TIDY "clang-tidy")
-if(CLANG_TIDY)
-	add_custom_target(
-		tidy
-		COMMAND ${CLANG_TIDY}
-		-config=''
-		--
-		-std=c++17
-		${SOURCE_FILES}
-		${HEADER_FILES}
-	)
-endif()
+# find_program(CLANG_TIDY "clang-tidy")
+# if(CLANG_TIDY)
+# 	add_custom_target(
+# 		tidy
+# 		COMMAND ${CLANG_TIDY}
+# 		-config=''
+# 		--
+# 		-std=c++17
+# 		${SOURCE_FILES}
+# 		${HEADER_FILES}
+# 	)
+# endif()
 
 # Add header files
 include_directories(include)
