@@ -14,7 +14,33 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 file(GLOB_RECURSE SOURCE_FILES "src/*.cpp")
 
 # Add header files
-# file(GLOB_RECURSE HEADER_FILES "include/*.hpp" "include/*.h" "src/*.hpp" "src/*.h")
+file(GLOB_RECURSE HEADER_FILES "include/*.hpp" "src/*.hpp")
+
+include(cmake/clang-cxx-dev-tools.cmake)
+find_program(CLANG_FORMAT "clang-format")
+if(CLANG_FORMAT)
+	add_custom_target(
+		fmt
+		COMMAND ${CLANG_FORMAT}
+		-i
+		-style=file
+		${SOURCE_FILES}
+		${HEADER_FILES}
+	)
+endif()
+
+find_program(CLANG_TIDY "clang-tidy")
+if(CLANG_TIDY)
+	add_custom_target(
+		tidy
+		COMMAND ${CLANG_TIDY}
+		-config=''
+		--
+		-std=c++17
+		${SOURCE_FILES}
+		${HEADER_FILES}
+	)
+endif()
 
 # Add header files
 include_directories(include)
