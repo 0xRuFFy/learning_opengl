@@ -3,6 +3,7 @@ CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
 CMakeScripts/
+Makefile
 *.sln
 *.vcxproj
 *.vcproj
