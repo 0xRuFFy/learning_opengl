@@ -3,9 +3,7 @@
 #include <iostream>
 #include "falling_sand.hpp"
 
-FallingSand::FallingSand() : window(800, 600, "Falling Sand") {
-    world = FallingSandWorld();
-}
+FallingSand::FallingSand() : window(800, 600, "Falling Sand") { world = FallingSandWorld(); }
 
 FallingSand::~FallingSand() {
     // TODO cleanup

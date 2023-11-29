@@ -4,7 +4,7 @@
 #include <iostream>
 #include "window.hpp"
 
-Window::Window(int width, int height, const char* title) {
+Window::Window(int width, int height, const char *title) {
     if (!glfwInit()) {
         throw std::runtime_error("Failed to initialize GLFW");
     }
@@ -15,7 +15,6 @@ Window::Window(int width, int height, const char* title) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-
 
     glfwWindow = glfwCreateWindow(800, 600, "Falling Sand", NULL, NULL);
     if (!glfwWindow) {
@@ -37,14 +36,13 @@ Window::Window(int width, int height, const char* title) {
 
     glfwSetWindowPos(glfwWindow, (mode->width - width) / 2, (mode->height - height) / 2);
 
-
     glfwMakeContextCurrent(glfwWindow);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         throw std::runtime_error("Failed to initialize GLAD");
     }
 
-    std::cout << "GLAD initialized" << std::endl; 
+    std::cout << "GLAD initialized" << std::endl;
 
     glViewport(0, 0, 800, 600);
 }
@@ -54,18 +52,11 @@ Window::~Window() {
     glfwTerminate();
 }
 
-bool Window::shouldClose() const noexcept {
-    return glfwWindowShouldClose(glfwWindow);
-}
+bool Window::shouldClose() const noexcept { return glfwWindowShouldClose(glfwWindow); }
 
-bool Window::isKeyPressed(int keyCode) const noexcept {
-    return glfwGetKey(glfwWindow, keyCode) == GLFW_PRESS;
-}
+bool Window::isKeyPressed(int keyCode) const noexcept { return glfwGetKey(glfwWindow, keyCode) == GLFW_PRESS; }
 
-
-bool Window::isMousePressed(int button) const noexcept {
-    return glfwGetMouseButton(glfwWindow, button) == GLFW_PRESS;
-}
+bool Window::isMousePressed(int button) const noexcept { return glfwGetMouseButton(glfwWindow, button) == GLFW_PRESS; }
 
 bool Window::isMouseClicked(int button) const noexcept {
     static bool wasPressed = false;
@@ -92,6 +83,4 @@ void Window::update() noexcept {
     glfwPollEvents();
 }
 
-void Window::close() noexcept {
-    glfwSetWindowShouldClose(glfwWindow, GLFW_TRUE);
-}
+void Window::close() noexcept { glfwSetWindowShouldClose(glfwWindow, GLFW_TRUE); }
