@@ -9,6 +9,8 @@ Window::Window(int width, int height, const char* title) {
         throw std::runtime_error("Failed to initialize GLFW");
     }
 
+    std::cout << "GLFW initialized" << std::endl;
+
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -42,6 +44,8 @@ Window::Window(int width, int height, const char* title) {
         throw std::runtime_error("Failed to initialize GLAD");
     }
 
+    std::cout << "GLAD initialized" << std::endl; 
+
     glViewport(0, 0, 800, 600);
 }
 
@@ -52,6 +56,38 @@ Window::~Window() {
 
 bool Window::shouldClose() noexcept {
     return glfwWindowShouldClose(glfwWindow);
+}
+
+void Window::close() noexcept {
+    glfwSetWindowShouldClose(glfwWindow, GLFW_TRUE);
+}
+
+bool Window::isKeyPressed(int keyCode) noexcept {
+    return glfwGetKey(glfwWindow, keyCode) == GLFW_PRESS;
+}
+
+std::pair<double, double> Window::getCursorPos() noexcept {
+    double x, y;
+    glfwGetCursorPos(glfwWindow, &x, &y);
+    return std::make_pair(x, y);
+}
+
+bool Window::isMousePressed(int button) noexcept {
+    return glfwGetMouseButton(glfwWindow, button) == GLFW_PRESS;
+}
+
+bool Window::isMouseClicked(int button) noexcept {
+    static bool wasPressed = false;
+    bool isPressed = glfwGetMouseButton(glfwWindow, button) == GLFW_PRESS;
+
+    if (isPressed && !wasPressed) {
+        wasPressed = true;
+        return true;
+    } else if (!isPressed) {
+        wasPressed = false;
+    }
+
+    return false;
 }
 
 void Window::update() noexcept {

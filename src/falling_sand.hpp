@@ -10,10 +10,10 @@ class FallingSand : public Application {
         virtual ~FallingSand();
 
         void run() override;
-        void initialize() override;
-        void cleanup() override;
 
     private:
         Window window;
+
+        void processInput();
 };
 
