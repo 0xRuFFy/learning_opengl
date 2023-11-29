@@ -1,6 +1,5 @@
 
 #include <glad/glad.h>
-#include <utility>
 #include <iostream>
 #include "falling_sand.hpp"
 

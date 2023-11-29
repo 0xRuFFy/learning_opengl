@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "../application/window.hpp"
+#include "window.hpp"
 
 class FallingSandWorld {
    public:

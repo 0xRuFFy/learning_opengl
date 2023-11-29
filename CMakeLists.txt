@@ -13,9 +13,10 @@ file(GLOB_RECURSE SOURCE_FILES "src/*.cpp")
 
 # Add header files
 include_directories(include)
+include_directories(external/glad/include)
 
 # Add Glad
-add_library(glad STATIC "include/glad/glad.c")
+add_library(glad STATIC "external/glad/src/glad.c")
 
 # Add GLFW
 add_subdirectory(external/glfw)
