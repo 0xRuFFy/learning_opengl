@@ -1,6 +1,7 @@
 
-#include <iostream>
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <iostream>
 #include "window.hpp"
 
 Window::Window(int width, int height, const char* title) {
@@ -19,6 +20,21 @@ Window::Window(int width, int height, const char* title) {
         glfwTerminate();
         throw std::runtime_error("Failed to create GLFW window");
     }
+
+    GLFWmonitor *monitor = glfwGetPrimaryMonitor();
+
+    if (!monitor) {
+        throw std::runtime_error("Failed to get primary monitor");
+    }
+
+    const GLFWvidmode *mode = glfwGetVideoMode(monitor);
+
+    if (!mode) {
+        throw std::runtime_error("Failed to get video mode");
+    }
+
+    glfwSetWindowPos(glfwWindow, (mode->width - width) / 2, (mode->height - height) / 2);
+
 
     glfwMakeContextCurrent(glfwWindow);
 
