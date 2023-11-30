@@ -16,7 +16,7 @@ Window::Window(int width, int height, const char *title) {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
-    glfwWindow = glfwCreateWindow(800, 600, "Falling Sand", NULL, NULL);
+    glfwWindow = glfwCreateWindow(800, 600, title, nullptr, nullptr);
     if (!glfwWindow) {
         glfwTerminate();
         throw std::runtime_error("Failed to create GLFW window");
