@@ -1,8 +1,8 @@
 
-#include "falling_sand/falling_sand.hpp"
+#include "application.hpp"
 
 int main() {
-    FallingSand app;
+    Application app;
 
     app.run();
 

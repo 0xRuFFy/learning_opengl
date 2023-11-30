@@ -1,10 +1,19 @@
 
-
 #pragma once
+
+#include "window.hpp"
 
 class Application {
 public:
-    virtual ~Application() = default;
+    Application();
+    ~Application() = default;
 
-    virtual void run() = 0;
+    void run();
+
+private:
+    Window window;
+
+    void update();
+    void render();
+    void processInput();
 };
