@@ -6,14 +6,15 @@
 class Application {
 public:
     Application();
-    ~Application() = default;
+    ~Application();
 
     void run();
 
 private:
     Window window;
+    uint32_t VBO{}, VAO{}, EBO{}, shaderProgram;
 
     void update();
-    void render();
+    void render() const;
     void processInput();
 };
