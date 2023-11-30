@@ -3,7 +3,10 @@
 #include "application.hpp"
 
 Application::Application() : window(800, 600, "Learning OpenGL") {
-    // TODO Constructor
+    // learnopengl.com
+    // Hello Triangle
+    // https://learnopengl.com/Getting-started/Hello-Triangle
+    // Vertex input
 }
 
 void Application::run() {
